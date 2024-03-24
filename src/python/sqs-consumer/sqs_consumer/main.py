@@ -4,7 +4,9 @@ from datetime import datetime
 from pydantic import BaseModel
 from typing import Any
 from sqs_consumer.gateway.sqs_consumer import SQSConfig, SQSConsumer
-
+import signal
+from signal import Signals
+import time
 
 class Request(BaseModel):
     body: str
@@ -35,6 +37,8 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
     logger.info("Starting SQS Consumer")
+
+
     sqs_config = SQSConfig(
         queue_url="http://sqs.ap-northeast-1.localhost.localstack.cloud:4566/000000000000/test-queue"
     )
@@ -43,4 +47,13 @@ if __name__ == "__main__":
         message_deserializer=message_deserializer,
         message_processor=message_processor,
     )
+
+    def handle_sigterm(signum: int, frame) -> None:
+        print(type(signum))
+        print(type(frame))
+        logger.info(f"Got signal. {signum}, {frame}")
+        sqs_consumer.stop()
+        time.sleep(5)
+    signal.signal(signal.SIGTERM, handle_sigterm)
+
     sqs_consumer.run()

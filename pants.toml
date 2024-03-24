@@ -42,6 +42,9 @@ root_patterns = [
     "/src/protos",
 ]
 
+[docker]
+build_args = ["GIT_COMMIT"]
+
 [test]
 use_coverage = true
 

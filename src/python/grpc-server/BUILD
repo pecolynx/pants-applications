@@ -27,3 +27,9 @@ python_tests(
     dependencies=[
     ]
 )
+
+docker_image(
+    name="docker",
+    image_tags=["{build_args.GIT_COMMIT}"],
+    repository="grpc_server",
+)

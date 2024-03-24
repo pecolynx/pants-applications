@@ -17,3 +17,17 @@ export QUEUE_URL=http://sqs.ap-northeast-1.localhost.localstack.cloud:4566/00000
 ```
 aws sqs send-message --queue-url ${QUEUE_URL} --message-body "Test1" --region ap-northeast-1
 ```
+
+
+```
+GIT_COMMIT=test pants package :
+docker run --rm \
+  --net=host \
+  -e AWS_ACCESS_KEY_ID=dummy \
+  -e AWS_SECRET_ACCESS_KEY=dummy \
+  -e AWS_DEFAULT_REGION=ap-northeast-1 \
+  -e AWS_REGION=ap-northeast-1 \
+  -e AWS_ENDPOINT_URL=http://localhost:4566 \
+  -t sqs_consumer:test
+```
+
