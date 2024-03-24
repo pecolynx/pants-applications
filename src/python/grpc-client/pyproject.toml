@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "grpc-client"
+version = "0.1.0"
+description = ""
+authors = ["pecolynx <pecolynx@gmail.com>"]
+readme = "README.md"
+packages = [{include = "grpc_client"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+protobuf = "^5.26.0"
+grpcio = "^1.62.1"
+grpc-stubs = "^1.53.0.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
