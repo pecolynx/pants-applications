@@ -1,11 +1,12 @@
 import logging
+import threading
 import time
 from typing import Any, Callable, Generic, TypeVar
 
 import boto3
 import sqs_extended_client  # noqa
 from pydantic import BaseModel
-import threading
+
 T = TypeVar("T")
 
 logger = logging.getLogger(__name__)

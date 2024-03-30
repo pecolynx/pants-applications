@@ -1,12 +1,12 @@
 import logging
+import signal
+import time
 from datetime import datetime
+from typing import Any
 
 from pydantic import BaseModel
-from typing import Any
 from sqs_consumer.gateway.sqs_consumer import SQSConfig, SQSConsumer
-import signal
-from signal import Signals
-import time
+
 
 class Request(BaseModel):
     body: str
@@ -18,7 +18,7 @@ def message_deserializer(message: dict[str, Any]) -> Request:
         raise ValueError("Body is required")
     if "Attributes" not in message:
         raise ValueError("Attributes is required")
-    attributes:dict[str,str] = message["Attributes"]
+    attributes: dict[str, str] = message["Attributes"]
     if "SentTimestamp" not in attributes:
         raise ValueError("SentTimestamp is required")
 
@@ -38,7 +38,6 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
     logger.info("Starting SQS Consumer")
 
-
     sqs_config = SQSConfig(
         queue_url="http://sqs.ap-northeast-1.localhost.localstack.cloud:4566/000000000000/test-queue"
     )
@@ -54,6 +53,7 @@ if __name__ == "__main__":
         logger.info(f"Got signal. {signum}, {frame}")
         sqs_consumer.stop()
         time.sleep(5)
+
     signal.signal(signal.SIGTERM, handle_sigterm)
 
     sqs_consumer.run()

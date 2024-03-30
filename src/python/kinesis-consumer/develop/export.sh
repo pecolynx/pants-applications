@@ -1,0 +1,12 @@
+export AWS_REGION=ap-northeast-1
+export EXECUTABLE_NAME=/opt/app/kinesis_consumer.pex
+export STREAM_NAME=sample-stream
+export STREAM_ARN=arn:aws:kinesis:ap-northeast-1:000000000000:stream/sample-stream
+export APPLICATION_NAME=sample-application
+export PROCESSING_LANGUAGE=python/3.11
+export METRICS_LEVEL=None
+export JAVA_LOG_LEVEL=INFO
+export KINESIS_ENDPOINT=http://localhost:4566
+export DYNAMODB_ENDPOINT=http://localhost:4566
+export AWS_ACCESS_KEY_ID=access_key_id
+export AWS_SECRET_ACCESS_KEY=secret_access_key
