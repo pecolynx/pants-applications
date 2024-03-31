@@ -9,6 +9,7 @@
 //     "CPython<4,>=3.9"
 //   ],
 //   "generated_with_requirements": [
+//     "grpcio-testing<2.0.0,>=1.62.1",
 //     "grpcio<2.0.0,>=1.62.1",
 //     "protobuf<6.0.0,>=5.26.0"
 //   ],
@@ -187,34 +188,55 @@
           "artifacts": [
             {
               "algorithm": "sha256",
-              "hash": "a49b6c5359bf34fb7bf965bf21abfab4476e4527d822ab5289ee3bf73f291159",
-              "url": "https://files.pythonhosted.org/packages/82/98/757626ed06e0d99c59428f5761c57c0e35bddb45041c0e222183492d6ddb/protobuf-5.26.0-py3-none-any.whl"
+              "hash": "18188363078d4248463d3f533f69766f341f5f5b6db6ee725a8fa4398e6c7716",
+              "url": "https://files.pythonhosted.org/packages/a6/3f/c67eb43efa15548476ea9f87b05a54f651733762cf65d292db9acc381b1f/grpcio_testing-1.62.1-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "6ee9d1aa02f951c5ce10bf8c6cfb7604133773038e33f913183c8b5201350600",
-              "url": "https://files.pythonhosted.org/packages/39/3f/16bdd9d43b024c1d178e817826e4e1ca8a25da3faff1e7566f341094143d/protobuf-5.26.0-cp37-abi3-manylinux2014_x86_64.whl"
+              "hash": "cb2695100ab2900b51cfdbdb56fe12100d49580f10ae067a2cab117e8fc746ed",
+              "url": "https://files.pythonhosted.org/packages/5b/43/c555abddc2d76fc6c733d24adf1574c22c7ea457473b6002dd34dcd79899/grpcio-testing-1.62.1.tar.gz"
+            }
+          ],
+          "project_name": "grpcio-testing",
+          "requires_dists": [
+            "grpcio>=1.62.1",
+            "protobuf>=4.21.6"
+          ],
+          "requires_python": null,
+          "version": "1.62.1"
+        },
+        {
+          "artifacts": [
+            {
+              "algorithm": "sha256",
+              "hash": "da612f2720c0183417194eeaa2523215c4fcc1a1949772dc65f05047e08d5932",
+              "url": "https://files.pythonhosted.org/packages/d8/ba/1c8528299fe9082f9400e6f4eb021cb3311943b2bff9267d5e24e4b4a4d8/protobuf-5.26.1-py3-none-any.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "e184175276edc222e2d5e314a72521e10049938a9a4961fe4bea9b25d073c03f",
-              "url": "https://files.pythonhosted.org/packages/69/fd/0afea50450851849d60b8133abc887ce40a71e6098c8ea5cf7bf05b28b20/protobuf-5.26.0-cp37-abi3-manylinux2014_aarch64.whl"
+              "hash": "38aa5f535721d5bb99861166c445c4105c4e285c765fbb2ac10f116e32dcd46d",
+              "url": "https://files.pythonhosted.org/packages/1e/40/2eb2bf643d4b060b1602a25748b48d75431f4951be2470f8ae136952b3d3/protobuf-5.26.1-cp37-abi3-macosx_10_9_universal2.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "7e47c57303466c867374a17b2b5e99c5a7c8b72a94118e2f28efb599f19b4069",
-              "url": "https://files.pythonhosted.org/packages/7d/98/282bfe05071c9e1e7e4af692bc937e12e7adacf3b297e0274579de01c9d7/protobuf-5.26.0-cp37-abi3-macosx_10_9_universal2.whl"
+              "hash": "f7417703f841167e5a27d48be13389d52ad705ec09eade63dfc3180a959215d7",
+              "url": "https://files.pythonhosted.org/packages/2c/2a/d2741cad35fa5f06d9c59dda3274e5727ca11075dfd7de3f69c100efdcad/protobuf-5.26.1-cp37-abi3-manylinux2014_x86_64.whl"
             },
             {
               "algorithm": "sha256",
-              "hash": "82f5870d74c99addfe4152777bdf8168244b9cf0ac65f8eccf045ddfa9d80d9b",
-              "url": "https://files.pythonhosted.org/packages/ea/ab/ae590cd71f5a50cd9e0979593e217529b532a001e46c2dd0811c8697f4ad/protobuf-5.26.0.tar.gz"
+              "hash": "fbfe61e7ee8c1860855696e3ac6cfd1b01af5498facc6834fcc345c9684fb2ca",
+              "url": "https://files.pythonhosted.org/packages/c8/ac/6f4f48aa5472bf4b58f962a0c910e26bb7b648c141435cbe32b797768985/protobuf-5.26.1-cp37-abi3-manylinux2014_aarch64.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "8ca2a1d97c290ec7b16e4e5dff2e5ae150cc1582f55b5ab300d45cb0dfa90e51",
+              "url": "https://files.pythonhosted.org/packages/d2/e5/7e22ca7201a6b1040aae7787d0fe6cd970311da376a86fdafa5182be1d1b/protobuf-5.26.1.tar.gz"
             }
           ],
           "project_name": "protobuf",
           "requires_dists": [],
           "requires_python": ">=3.8",
-          "version": "5.26.0"
+          "version": "5.26.1"
         }
       ],
       "platform_tag": null
@@ -225,6 +247,7 @@
   "pip_version": "23.1.2",
   "prefer_older_binary": false,
   "requirements": [
+    "grpcio-testing<2.0.0,>=1.62.1",
     "grpcio<2.0.0,>=1.62.1",
     "protobuf<6.0.0,>=5.26.0"
   ],

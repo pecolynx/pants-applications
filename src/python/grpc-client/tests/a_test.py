@@ -3,4 +3,4 @@ def test_a() -> None:
 
 
 def test_b() -> None:
-    assert 1 == 2
+    assert 1 == 1

@@ -67,6 +67,21 @@ files = [
 protobuf = ["grpcio-tools (>=1.62.1)"]
 
 [[package]]
+name = "grpcio-testing"
+version = "1.62.1"
+description = "Testing utilities for gRPC Python"
+optional = false
+python-versions = "*"
+files = [
+    {file = "grpcio-testing-1.62.1.tar.gz", hash = "sha256:cb2695100ab2900b51cfdbdb56fe12100d49580f10ae067a2cab117e8fc746ed"},
+    {file = "grpcio_testing-1.62.1-py3-none-any.whl", hash = "sha256:18188363078d4248463d3f533f69766f341f5f5b6db6ee725a8fa4398e6c7716"},
+]
+
+[package.dependencies]
+grpcio = ">=1.62.1"
+protobuf = ">=4.21.6"
+
+[[package]]
 name = "protobuf"
 version = "5.26.0"
 description = ""
@@ -89,4 +104,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "ccd342191cf4da65eea749569570f82a4bd5aa2e2983b2e5e301a75db56f7e31"
+content-hash = "907c704699569fd80f90669545f3dfaa4cad8ac342e8ec9a5f9c99ce9f20fc7b"

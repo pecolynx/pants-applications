@@ -10,6 +10,7 @@ packages = [{include = "grpc_server"}]
 python = "^3.10"
 grpcio = "^1.62.1"
 protobuf = "^5.26.0"
+grpcio-testing = "^1.62.1"
 
 
 [build-system]

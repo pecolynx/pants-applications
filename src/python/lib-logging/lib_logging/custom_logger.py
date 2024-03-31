@@ -2,6 +2,7 @@ import logging
 from collections.abc import MutableMapping
 from typing import Any
 
+
 class CustomLogger(logging.LoggerAdapter[logging.Logger]):
     def process(
         self, msg: Any, kwargs: MutableMapping[str, Any]

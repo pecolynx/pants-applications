@@ -75,7 +75,10 @@ install_from_resolve = "mypy"
 requirements = ["//3rdparty/python:mypy"]
 
 [coverage-py]
-report = "xml"
+report = [
+    "xml",
+    "html",
+]
 
 [pytest]
 config = "build-support/pyproject.toml"

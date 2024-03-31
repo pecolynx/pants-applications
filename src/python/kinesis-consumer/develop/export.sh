@@ -5,6 +5,7 @@ export STREAM_ARN=arn:aws:kinesis:ap-northeast-1:000000000000:stream/sample-stre
 export APPLICATION_NAME=sample-application
 export PROCESSING_LANGUAGE=python/3.11
 export METRICS_LEVEL=None
+export JAVA_LOG_LEVEL=WARN
 export JAVA_LOG_LEVEL=INFO
 export KINESIS_ENDPOINT=http://localhost:4566
 export DYNAMODB_ENDPOINT=http://localhost:4566

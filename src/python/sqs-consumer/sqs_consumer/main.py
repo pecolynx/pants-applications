@@ -47,7 +47,7 @@ if __name__ == "__main__":
         message_processor=message_processor,
     )
 
-    def handle_sigterm(signum: int, frame) -> None:
+    def handle_sigterm(signum: int, frame: Any) -> None:
         print(type(signum))
         print(type(frame))
         logger.info(f"Got signal. {signum}, {frame}")
