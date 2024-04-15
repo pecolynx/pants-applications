@@ -23,7 +23,6 @@ pex_binary(
 python_tests(
     name="tests",
     interpreter_constraints=["CPython>=3.10"],
-    # resolve="pytest",
     resolve="grpc_server",
     sources=["tests/**/*_test.py"],
     dependencies=[

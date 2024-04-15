@@ -18,10 +18,11 @@ import time
 import amazon_kclpy
 from amazon_kclpy import kcl
 from amazon_kclpy.v3 import processor
-from kinesis_consumer.log.custom_logger import CustomLogger
-from kinesis_consumer.log.json_formatter import JsonFormatter
-from kinesis_consumer.sequence_number_pair import SequenceNumberPair
+from kinesis_consumer.domain.sequence_number import SequenceNumber
 from kinesis_consumer.service.app_service import AppService
+from kinesis_consumer.service.multiprocess_gateway import MultiprocessGateway
+from lib_loggin.json_formatter import JsonFormatter
+from lib_logging.custom_logger import CustomLogger
 
 logger = logging.getLogger(__name__)
 
@@ -40,12 +41,13 @@ class RecordProcessor(processor.RecordProcessorBase):  # type: ignore
         self._SLEEP_SECONDS = 5
         self._CHECKPOINT_RETRIES = 5
         self._CHECKPOINT_FREQ_SECONDS = 60
-        self.largest_sequence_numer_pair: SequenceNumberPair = SequenceNumberPair(0, 0)
+        self._largest_sequence_numer: SequenceNumber = SequenceNumber(0, 0)
         self._last_checkpoint_time = time.time()
         self._shard_id = ""
         self._shutdown_requested = False
         self._logger = logger
         self._app_service = app_service
+        self._multiprocess_gateway = MultiprocessGateway()
 
     def initialize(self, initialize_input: amazon_kclpy.messages.InitializeInput) -> None:
         """Called once by a KCLProcess before any calls to process_records.
@@ -110,7 +112,7 @@ class RecordProcessor(processor.RecordProcessorBase):  # type: ignore
             time.sleep(self._SLEEP_SECONDS)
 
     def process_record(
-        self, data: str, partition_key: str, sequence_number_pair: SequenceNumberPair
+        self, data: str, partition_key: str, sequence_number: SequenceNumber
     ) -> None:
         """Called for each record that is passed to process_records.
 
@@ -125,11 +127,11 @@ class RecordProcessor(processor.RecordProcessorBase):  # type: ignore
         ####################################
         self._logger.warning(
             f"Record (Partition Key: {partition_key}, "
-            + f"Sequence Number: {sequence_number_pair.sequence_number}, "
-            + f"Subsequence Number: {sequence_number_pair.sub_sequence_number}, "
+            + f"Sequence Number: {sequence_number.sequence_number}, "
+            + f"Subsequence Number: {sequence_number.sub_sequence_number}, "
             + f"Data Size: {len(data)}"
         )
-        self._app_service.process(partition_key, sequence_number_pair, data)
+        self._app_service.process(partition_key, sequence_number, data)
 
     def process_records(
         self, process_records_input: amazon_kclpy.messages.ProcessRecordsInput
@@ -149,11 +151,11 @@ class RecordProcessor(processor.RecordProcessorBase):  # type: ignore
                 seq = int(record.sequence_number)
                 sub_seq = record.sub_sequence_number
                 key = record.partition_key
-                current_sequence_number_pair = SequenceNumberPair(seq, sub_seq)
-                self.process_record(data, key, current_sequence_number_pair)
+                current_sequence_number = SequenceNumber(seq, sub_seq)
+                self.process_record(data, key, current_sequence_number)
 
-                if self.largest_sequence_numer_pair < current_sequence_number_pair:
-                    self.largest_sequence_numer_pair = current_sequence_number_pair
+                if self._largest_sequence_numer < current_sequence_number:
+                    self._largest_sequence_numer = current_sequence_number
 
             #
             # Checkpoints every self._CHECKPOINT_FREQ_SECONDS seconds
