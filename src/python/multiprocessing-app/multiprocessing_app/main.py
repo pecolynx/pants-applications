@@ -2,6 +2,7 @@ import logging
 import multiprocessing
 import time
 from logging.handlers import QueueHandler, QueueListener
+from typing import Any
 
 from lib_logging.json_formatter import JsonFormatter
 from multiprocessing_app.worker import Worker
@@ -22,7 +23,7 @@ def worker_process_2() -> None:
 
 
 def main() -> None:
-    log_queue = multiprocessing.Queue()
+    log_queue: multiprocessing.Queue[Any] = multiprocessing.Queue()
 
     formatter = JsonFormatter("%(asctime)s")
     log_handler = logging.StreamHandler()

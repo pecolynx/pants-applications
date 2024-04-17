@@ -15,7 +15,7 @@ python_sources(
 )
 
 pex_binary(
-    name="redis_list_consumer",
+    name="redis_publisher",
     resolve="redis_publisher",
     interpreter_constraints=["CPython>=3.11"],
     entry_point="redis_publisher/main.py",
@@ -27,10 +27,12 @@ python_tests(
     interpreter_constraints=["CPython>=3.11"],
     sources=["tests/**/*_test.py"],
     dependencies=[
+        ":src",
     ]
 )
 python_test_utils(
     name="test_utils",
+    resolve="redis_publisher",
     sources=[
         "tests/conftest.py",
     ]

@@ -6,7 +6,7 @@ import redis
 class RedisClientInterface(ABC):
     @abstractmethod
     @property
-    def data_access_commands() -> redis.core.commands.DataAccessCommands:
+    def data_access_commands(self) -> redis.core.commands.DataAccessCommands:
         pass
 
 
@@ -15,12 +15,12 @@ class RedisConfig:
 
 
 class RedisClient(RedisClientInterface):
-    def __init__(self, config: RedisConfig):
+    def __init__(self, config: RedisConfig) -> None:
         pass
 
-    def publish(self, channel: str, message: str):
+    def publish(self, channel: str, message: str) -> None:
         pass
 
     @property
-    def data_access_commands() -> redis.core.commands.DataAccessCommands:
+    def data_access_commands(self) -> redis.core.commands.DataAccessCommands:
         pass

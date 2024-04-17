@@ -26,6 +26,7 @@ python_tests(
     interpreter_constraints=["CPython>=3.11"],
     sources=["tests/**/*_test.py"],
     dependencies=[
+        ":src",
     ],
     skip_mypy=True,
 )

@@ -45,7 +45,6 @@ class RecordProcessor(processor.RecordProcessorBase):  # type: ignore
         self._last_checkpoint_time = time.time()
         self._shard_id = ""
         self._shutdown_requested = False
-        self._logger = logger
         self._app_service = app_service
         self._multiprocess_gateway = MultiprocessGateway()
 

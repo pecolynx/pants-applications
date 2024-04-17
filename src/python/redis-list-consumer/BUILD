@@ -23,7 +23,7 @@ pex_binary(
 
 python_tests(
     name="tests",
-    resolve="pytest",
+    resolve="redis_list_consumer",
     sources=["tests/**/*_test.py"],
     dependencies=[
     ]

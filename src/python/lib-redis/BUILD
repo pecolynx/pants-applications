@@ -20,6 +20,17 @@ python_sources(
     sources=["lib_redis/**/*.py"],
 )
 
+# redis_publisher
+poetry_requirements(
+    name="redis_publisher_poetry",
+    resolve="redis_publisher",
+)
+python_sources(
+    name="redis_publisher_src",
+    resolve="redis_publisher",
+    sources=["lib_redis/**/*.py"],
+)
+
 python_tests(
     name="tests",
     resolve="pytest",
