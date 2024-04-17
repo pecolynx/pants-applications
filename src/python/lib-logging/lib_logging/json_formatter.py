@@ -4,6 +4,7 @@ import logging
 
 class JsonFormatter(logging.Formatter):
     def format(self, record: logging.LogRecord) -> str:
+        # print(f"record: {record.__dict__}")
         logging.Formatter.format(self, record)
 
         ret = {}

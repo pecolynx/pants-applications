@@ -9,6 +9,15 @@ python_sources(
     sources=["lib_logging/**/*.py"],
 )
 
+
+python_tests(
+    name="tests",
+    resolve="pytest",
+    sources=["tests/**/*_test.py"],
+    dependencies=[
+    ]
+)
+
 # kinesis_consumer
 poetry_requirements(
     name="kinesis_consumer_poetry",
@@ -20,11 +29,13 @@ python_sources(
     sources=["lib_logging/**/*.py"],
 )
 
-
-python_tests(
-    name="tests",
-    resolve="pytest",
-    sources=["tests/**/*_test.py"],
-    dependencies=[
-    ]
+# multiprocessing_app
+poetry_requirements(
+    name="multiprocessing_app_poetry",
+    resolve="multiprocessing_app",
+)
+python_sources(
+    name="multiprocessing_app_src",
+    resolve="multiprocessing_app",
+    sources=["lib_logging/**/*.py"],
 )

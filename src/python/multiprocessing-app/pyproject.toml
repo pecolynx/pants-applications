@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "multiprocessing-app"
+version = "0.1.0"
+description = ""
+authors = ["pecolynx <pecolynx@gmail.com>"]
+readme = "README.md"
+packages = [{include = "multiprocessing_app"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,7 +1,5 @@
-from abc import ABC, abstractmethod
-
+from abc import abstractmethod, ABC
 import redis
-
 
 class RedisClientInterface(ABC):
     @abstractmethod
@@ -13,7 +11,6 @@ class RedisClientInterface(ABC):
 class RedisConfig:
     pass
 
-
 class RedisClient(RedisClientInterface):
     def __init__(self, config: RedisConfig):
         pass
@@ -24,3 +21,5 @@ class RedisClient(RedisClientInterface):
     @property
     def data_access_commands() -> redis.core.commands.DataAccessCommands:
         pass
+
+    
