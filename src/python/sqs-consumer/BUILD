@@ -21,9 +21,11 @@ pex_binary(
 
 python_tests(
     name="tests",
-    resolve="pytest",
+    resolve="sqs_consumer",
     sources=["tests/**/*_test.py"],
     dependencies=[
+        ":poetry#moto",
+        # "3rdparty/python:pytest#pytest",
     ]
 )
 

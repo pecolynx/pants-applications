@@ -1,17 +1,13 @@
 [tool.poetry]
-name = "sqs-consumer"
+name = "multithreading-app"
 version = "0.1.0"
 description = ""
 authors = ["pecolynx <pecolynx@gmail.com>"]
 readme = "README.md"
-packages = [{include = "sqs_consumer"}]
+packages = [{include = "multithreading_app"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-boto3 = "^1.34.69"
-amazon-sqs-extended-client = "^1.0.0"
-pydantic = "^2.6.4"
-moto = "^5.0.7"
 
 
 [build-system]

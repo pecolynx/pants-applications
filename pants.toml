@@ -1,5 +1,5 @@
 [GLOBAL]
-pants_version = "2.19.0"
+pants_version = "2.20.0"
 
 backend_packages = [
     "pants.backend.python",
@@ -37,6 +37,7 @@ lib_logging = "3rdparty/python/lib_logging.lock"
 lib_redis = "3rdparty/python/lib_redis.lock"
 kinesis_consumer = "3rdparty/python/kinesis_consumer.lock"
 multiprocessing_app = "3rdparty/python/multiprocessing_app.lock"
+multithreading_app = "3rdparty/python/multithreading_app.lock"
 
 [python-infer]
 ambiguity_resolution = "by_source_root"
