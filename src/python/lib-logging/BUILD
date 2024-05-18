@@ -12,7 +12,7 @@ python_sources(
 
 python_tests(
     name="tests",
-    resolve="pytest",
+    resolve="lib_logging",
     sources=["tests/**/*_test.py"],
     dependencies=[
     ]

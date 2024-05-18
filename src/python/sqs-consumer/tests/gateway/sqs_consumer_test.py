@@ -7,14 +7,14 @@ from moto import mock_aws
 from sqs_consumer.gateway.sqs_consumer import SQSConsumer, SQSConsumerConfig
 
 
-@pytest.fixture
-def env(monkeypatch):
+@pytest.fixture  # type: ignore[misc]
+def env(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("AWS_DEFAULT_REGION", "us-east-1")
     monkeypatch.setenv("AWS_ACCESS_KEY_ID", "fake_key")
     monkeypatch.setenv("AWS_SECRET_ACCESS_KEY", "fake_secret")
 
 
-@pytest.fixture
+@pytest.fixture  # type: ignore[misc]
 def sqs() -> Generator[tuple[boto3.client, str], None, None]:
     with mock_aws():
         sqs_client = boto3.client("sqs")
@@ -28,11 +28,10 @@ class TestMessageDeserializer:
 
     def execute(self, message: dict[str, Any]) -> str:
         self.message = message["Body"]
-        return message
+        return self.message
 
 
-# @mock_aws
-def test_a(env, sqs):
+def test_a(env, sqs) -> None:  # type: ignore[no-untyped-def]
     sqs_client, queue_url = sqs
     config = SQSConsumerConfig(queue_url=queue_url)
     deserializer = TestMessageDeserializer()
@@ -41,7 +40,7 @@ def test_a(env, sqs):
         message_deserializer=deserializer.execute,
         message_processor=lambda x: None,
     )
-    consumer.is_running = MagicMock(side_effect=[True, False])
+    consumer.is_running = MagicMock(side_effect=[True, False])  # type: ignore[method-assign]
     sqs_client.send_message(QueueUrl=queue_url, MessageBody="Hello")
     consumer.run()
 

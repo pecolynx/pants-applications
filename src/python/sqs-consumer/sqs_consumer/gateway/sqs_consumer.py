@@ -67,6 +67,6 @@ class SQSConsumer(Generic[T]):
 
     def _delete_message(self, receipt_handle: str) -> None:
         self.sqs.delete_message(
-            QueueUrl=self.sqs_config.queue_url,
+            QueueUrl=self.config.queue_url,
             ReceiptHandle=receipt_handle,
         )

@@ -35,9 +35,10 @@ def test_successful_unary_unary(real_time_server):
     )
 
     response, trailing_metadata, code, details = rpc.termination()
-    
+
     assert response == calc_pb2.AddResponse(result=3)
     assert code == grpc.StatusCode.OK
+
 
 def test_successful_unary_stream(real_time_server):
     calc_service = calc_pb2.DESCRIPTOR.services_by_name["Calc"]
@@ -49,11 +50,10 @@ def test_successful_unary_stream(real_time_server):
         None,
     )
 
-    initial_metadata = rpc.initial_metadata()
+    # initial_metadata = rpc.initial_metadata()
 
     responses = [rpc.take_response() for _ in range(6)]
     # print(initial_metadata)
-
 
     trailing_metadata, code, details = rpc.termination()
 
@@ -69,7 +69,6 @@ def test_successful_unary_stream(real_time_server):
     assert code == grpc.StatusCode.OK
 
 
-
 def test_successful_stream_unary(real_time_server):
     calc_service = calc_pb2.DESCRIPTOR.services_by_name["Calc"]
     # print(calc_service.methods_by_name)
@@ -83,7 +82,7 @@ def test_successful_stream_unary(real_time_server):
     rpc.send_request(calc_pb2.SumRequest(x=3))
     rpc.requests_closed()
 
-    initial_metadata = rpc.initial_metadata()
+    # initial_metadata = rpc.initial_metadata()
     # print(initial_metadata)
 
     response, trailing_metadata, code, details = rpc.termination()

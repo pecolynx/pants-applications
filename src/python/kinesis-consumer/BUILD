@@ -7,7 +7,7 @@ python_sources(
     name="src",
     resolve="kinesis_consumer",
     interpreter_constraints=["CPython>=3.11"],
-    sources=["kinesis_consumer/**/*.py"],
+    sources=["kinesis_consumer/**/*.py", "kinesis_consumer/main.py"],
     dependencies=[
         ":poetry",
         "src/python/lib-logging:kinesis_consumer_src",

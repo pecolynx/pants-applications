@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import Any
 
 from pydantic import BaseModel
-from sqs_consumer.gateway.sqs_consumer import SQSConfig, SQSConsumer
+from sqs_consumer.gateway.sqs_consumer import SQSConsumer, SQSConsumerConfig
 
 
 class Request(BaseModel):
@@ -38,11 +38,11 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
     logger.info("Starting SQS Consumer")
 
-    sqs_config = SQSConfig(
+    config = SQSConsumerConfig(
         queue_url="http://sqs.ap-northeast-1.localhost.localstack.cloud:4566/000000000000/test-queue"
     )
     sqs_consumer = SQSConsumer(
-        sqs_config=sqs_config,
+        config=config,
         message_deserializer=message_deserializer,
         message_processor=message_processor,
     )
