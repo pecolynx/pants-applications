@@ -26,7 +26,7 @@ def real_time_server():
 
 def test_successful_unary_unary(real_time_server):
     calc_service = calc_pb2.DESCRIPTOR.services_by_name["Calc"]
-    print(calc_service.methods_by_name)
+    # print(calc_service.methods_by_name)
     rpc = real_time_server.invoke_unary_unary(
         calc_service.methods_by_name["Add"],
         (),
@@ -35,6 +35,60 @@ def test_successful_unary_unary(real_time_server):
     )
 
     response, trailing_metadata, code, details = rpc.termination()
-    print(response.result)
-    assert calc_pb2.AddResponse(result=3) == response
+    
+    assert response == calc_pb2.AddResponse(result=3)
+    assert code == grpc.StatusCode.OK
+
+def test_successful_unary_stream(real_time_server):
+    calc_service = calc_pb2.DESCRIPTOR.services_by_name["Calc"]
+    # print(calc_service.methods_by_name)
+    rpc = real_time_server.invoke_unary_stream(
+        calc_service.methods_by_name["Divisors"],
+        (),
+        calc_pb2.DivisorsRequest(x=12),
+        None,
+    )
+
+    initial_metadata = rpc.initial_metadata()
+
+    responses = [rpc.take_response() for _ in range(6)]
+    # print(initial_metadata)
+
+
+    trailing_metadata, code, details = rpc.termination()
+
+    # print(trailing_metadata)
+    # print(details)
+
+    assert responses[0] == calc_pb2.DivisorsResponse(result=1)
+    assert responses[1] == calc_pb2.DivisorsResponse(result=2)
+    assert responses[2] == calc_pb2.DivisorsResponse(result=3)
+    assert responses[3] == calc_pb2.DivisorsResponse(result=4)
+    assert responses[4] == calc_pb2.DivisorsResponse(result=6)
+    assert responses[5] == calc_pb2.DivisorsResponse(result=12)
+    assert code == grpc.StatusCode.OK
+
+
+
+def test_successful_stream_unary(real_time_server):
+    calc_service = calc_pb2.DESCRIPTOR.services_by_name["Calc"]
+    # print(calc_service.methods_by_name)
+    rpc = real_time_server.invoke_stream_unary(
+        calc_service.methods_by_name["Sum"],
+        (),
+        None,
+    )
+    rpc.send_request(calc_pb2.SumRequest(x=1))
+    rpc.send_request(calc_pb2.SumRequest(x=2))
+    rpc.send_request(calc_pb2.SumRequest(x=3))
+    rpc.requests_closed()
+
+    initial_metadata = rpc.initial_metadata()
+    # print(initial_metadata)
+
+    response, trailing_metadata, code, details = rpc.termination()
+    # print(trailing_metadata)
+    # print(details)
+    # print(response.result)
+    assert response == calc_pb2.SumResponse(result=6)
     assert code == grpc.StatusCode.OK

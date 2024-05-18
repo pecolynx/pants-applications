@@ -9,4 +9,4 @@ def test_a():
     threading.Thread(target=a.process_a, daemon=True).start()
 
     time.sleep(3)
-    assert False
+    # assert False

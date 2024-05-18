@@ -4,7 +4,7 @@ from unittest.mock import MagicMock
 import boto3
 import pytest
 from moto import mock_aws
-from sqs_consumer.gateway.sqs_consumer import SQSConfig, SQSConsumer
+from sqs_consumer.gateway.sqs_consumer import SQSConsumer, SQSConsumerConfig
 
 
 @pytest.fixture
@@ -31,17 +31,17 @@ class TestMessageDeserializer:
         return message
 
 
-@mock_aws
+# @mock_aws
 def test_a(env, sqs):
     sqs_client, queue_url = sqs
-    config = SQSConfig(queue_url=queue_url)
+    config = SQSConsumerConfig(queue_url=queue_url)
     deserializer = TestMessageDeserializer()
     consumer = SQSConsumer[str](
-        sqs_config=config,
+        config=config,
         message_deserializer=deserializer.execute,
         message_processor=lambda x: None,
     )
-    consumer.is_stopped = MagicMock(side_effect=[False, True])
+    consumer.is_running = MagicMock(side_effect=[True, False])
     sqs_client.send_message(QueueUrl=queue_url, MessageBody="Hello")
     consumer.run()
 
