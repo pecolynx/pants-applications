@@ -12,11 +12,16 @@ line-length = 100
 [tool.mypy]
 ignore_missing_imports = true
 strict = true
+plugins = "pydantic.mypy"
 
 # [tool.bandit]
 # exclude_dirs = ['tests', 'path/to/file']
 # tests = ["B201", "B301"]
 # skips = ["B101", "B601"]
+
+# [mypy]
+# plugins = pydantic.mypy
+
 
 [[tool.mypy.overrides]]
 module = ["helloworld.v1.*"]

@@ -1,4 +1,6 @@
+annotated-types==0.6.0
 mypy==1.6.1
 mypy-extensions==1.0.0
+pydantic==2.7.1
+pydantic_core==2.18.2
 tomli==2.0.1
-typing_extensions==4.8.0

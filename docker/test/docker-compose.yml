@@ -1,0 +1,15 @@
+---
+version: '3'
+services:
+  test-postgres:
+    image: postgres:15.5-alpine3.19
+    container_name: test-postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - 5433:5432
+  test-redis:
+    image: "redis:7.0"
+    ports:
+      - "6379:6379"

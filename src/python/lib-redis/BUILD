@@ -33,7 +33,7 @@ python_sources(
 
 python_tests(
     name="tests",
-    resolve="pytest",
+    resolve="lib_redis",
     sources=["tests/**/*_test.py"],
     dependencies=[
     ]
