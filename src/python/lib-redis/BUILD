@@ -2,10 +2,20 @@ poetry_requirements(
     name="poetry",
     resolve="lib_redis",
 )
-
 python_sources(
     name="src",
     resolve="lib_redis",
+    sources=["lib_redis/**/*.py"],
+)
+
+# redis_client
+poetry_requirements(
+    name="redis_client_poetry",
+    resolve="redis_client",
+)
+python_sources(
+    name="redis_client_src",
+    resolve="redis_client",
     sources=["lib_redis/**/*.py"],
 )
 

@@ -11,7 +11,7 @@ run:
 	-e APPLICATION_NAME=sample-application \
 	-e PROCESSING_LANGUAGE=python/3.11 \
 	-e METRICS_LEVEL=None \
-	-e SHUTDOWN_GRACE_MILLIS=3000 \
+	-e SHUTDOWN_GRACE_MILLIS=10000 \
 	-e JAVA_LOG_LEVEL=WARN \
 	-e KINESIS_ENDPOINT=http://localhost:4566 \
 	-e DYNAMODB_ENDPOINT=http://localhost:4566 \
@@ -20,3 +20,10 @@ run:
 	kinesis_consumer:test
 
 # -e AWS_ENDPOINT=http://localhost:4566 \
+
+# $(eval pid := `ps -ef | grep "MultiLangDaemon" | grep -v "grep" | awk '{print $$$$2}'`)
+# kill -s TERM $(pid)
+docker-up:
+	cd local && docker compose up
+stop:
+	ps -ef | grep "MultiLangDaemon" | grep -v "grep" | awk '{print $$2}' | sudo xargs kill -15

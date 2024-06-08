@@ -29,6 +29,17 @@ python_sources(
     sources=["lib_logging/**/*.py"],
 )
 
+# kinesis_producer
+poetry_requirements(
+    name="kinesis_producer_poetry",
+    resolve="kinesis_producer",
+)
+python_sources(
+    name="kinesis_producer_src",
+    resolve="kinesis_producer",
+    sources=["lib_logging/**/*.py"],
+)
+
 # multiprocessing_app
 poetry_requirements(
     name="multiprocessing_app_poetry",

@@ -36,8 +36,10 @@ redis_publisher = "3rdparty/python/redis_publisher.lock"
 lib_logging = "3rdparty/python/lib_logging.lock"
 lib_redis = "3rdparty/python/lib_redis.lock"
 kinesis_consumer = "3rdparty/python/kinesis_consumer.lock"
+kinesis_producer = "3rdparty/python/kinesis_producer.lock"
 multiprocessing_app = "3rdparty/python/multiprocessing_app.lock"
 multithreading_app = "3rdparty/python/multithreading_app.lock"
+redis_client = "3rdparty/python/redis_client.lock"
 
 [python-infer]
 ambiguity_resolution = "by_source_root"

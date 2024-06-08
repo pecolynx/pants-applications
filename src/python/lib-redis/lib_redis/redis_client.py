@@ -5,11 +5,12 @@ import redis
 from pydantic import BaseModel
 
 
-class RedisClientInterface(ABC):
-    @abstractmethod
-    @property
-    def data_access_commands(self) -> redis.commands.core.DataAccessCommands[Any]:
-        pass
+class RedisClientInterface(redis.commands.core.DataAccessCommands, redis.commands.core.ManagementCommands):
+    # @abstractmethod
+    # @property
+    # # def data_access_commands(self) -> redis.commands.core.DataAccessCommands[Any]:
+    # def data_access_commands(self) -> redis.commands.core.DataAccessCommands:
+    #     pass
 
     @abstractmethod
     def pubsub(self) -> redis.client.PubSub:
@@ -23,18 +24,17 @@ class RedisClientConfig(BaseModel):
     password: Optional[str]
 
 
-class RedisClient(RedisClientInterface):
-    def __init__(self, config: RedisClientConfig) -> None:
-        self.redis = redis.StrictRedis(
+def new_redis_client(config: RedisClientConfig) -> RedisClientInterface:
+    return redis.StrictRedis(
             host=config.host, port=config.port, db=config.db, password=config.password
         )
 
-    def publish(self, channel: str, message: str) -> None:
-        pass
+    # def publish(self, channel: str, message: str) -> None:
+    #     pass
 
-    @property
-    def data_access_commands(self) -> redis.commands.core.DataAccessCommands[Any]:
-        return self.redis
+    # # @property
+    # # def data_access_commands(self) -> redis.commands.core.DataAccessCommands[Any]:
+    # #     return self.redis
 
-    def pubsub(self) -> redis.client.PubSub:
-        return self.redis.pubsub()
+    # def pubsub(self) -> redis.client.PubSub:
+    #     return self.redis.pubsub()

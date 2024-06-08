@@ -21,7 +21,7 @@ from amazon_kclpy.v3 import processor
 from kinesis_consumer.domain.sequence_number import SequenceNumber
 from kinesis_consumer.service.app_service import AppService
 from kinesis_consumer.service.multiprocess_gateway import MultiprocessGateway
-from lib_loggin.json_formatter import JsonFormatter
+from lib_logging.json_formatter import JsonFormatter
 from lib_logging.custom_logger import CustomLogger
 
 logger = logging.getLogger(__name__)
@@ -162,8 +162,8 @@ class RecordProcessor(processor.RecordProcessorBase):  # type: ignore
             if time.time() - self._last_checkpoint_time > self._CHECKPOINT_FREQ_SECONDS:
                 self.checkpoint(
                     process_records_input.checkpointer,
-                    str(self.largest_sequence_numer_pair.sequence_number),
-                    self.largest_sequence_numer_pair.sub_sequence_number,
+                    str(self._largest_sequence_numer.sequence_number),
+                    self._largest_sequence_numer.sub_sequence_number,
                 )
                 self._last_checkpoint_time = time.time()
         except Exception as e:
@@ -182,9 +182,9 @@ class RecordProcessor(processor.RecordProcessorBase):  # type: ignore
         self, shutdown_requested_input: amazon_kclpy.messages.ShutdownRequestedInput
     ) -> None:
         self._logger.warning("Shutdown has been requested, checkpointing.")
-        self._shutdown_requested = True
-        time.sleep(5)
-        shutdown_requested_input.checkpointer.checkpoint()
+        # self._shutdown_requested = True
+        # time.sleep(5)
+        # shutdown_requested_input.checkpointer.checkpoint()
 
 
 if __name__ == "__main__":
