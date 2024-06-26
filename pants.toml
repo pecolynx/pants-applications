@@ -40,6 +40,8 @@ kinesis_producer = "3rdparty/python/kinesis_producer.lock"
 multiprocessing_app = "3rdparty/python/multiprocessing_app.lock"
 multithreading_app = "3rdparty/python/multithreading_app.lock"
 redis_client = "3rdparty/python/redis_client.lock"
+layout_zipapp = "3rdparty/python/layout_zipapp.lock"
+layout_packed = "3rdparty/python/layout_packed.lock"
 
 [python-infer]
 ambiguity_resolution = "by_source_root"

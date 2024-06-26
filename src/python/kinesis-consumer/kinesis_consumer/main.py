@@ -182,6 +182,7 @@ class RecordProcessor(processor.RecordProcessorBase):  # type: ignore
         self, shutdown_requested_input: amazon_kclpy.messages.ShutdownRequestedInput
     ) -> None:
         self._logger.warning("Shutdown has been requested, checkpointing.")
+        self._logger.info(f"shutdown_requested_input: {vars(shutdown_requested_input)}")
         # self._shutdown_requested = True
         # time.sleep(5)
         # shutdown_requested_input.checkpointer.checkpoint()
