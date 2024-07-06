@@ -1,18 +1,19 @@
 [GLOBAL]
-pants_version = "2.20.0"
+pants_version = "2.21.0"
 
 backend_packages = [
     "pants.backend.build_files.fmt.ruff",
     "pants.backend.python",
     "pants.backend.python.mixed_interpreter_constraints",
     "pants.backend.python.lint.bandit",
-    "pants.backend.python.lint.black",
+    # "pants.backend.python.lint.black",
     "pants.backend.python.lint.docformatter",
     "pants.backend.docker.lint.hadolint",
     "pants.backend.python.lint.isort",
     # "pants.backend.python.lint.pylint",
     "pants.backend.python.lint.pyupgrade",
     "pants.backend.experimental.python.lint.ruff.check",
+    "pants.backend.experimental.python.lint.ruff.format",
     "pants.backend.python.typecheck.mypy",
     "pants.backend.codegen.protobuf.python",
     "pants.backend.docker",
