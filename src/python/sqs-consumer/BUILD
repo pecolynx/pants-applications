@@ -26,7 +26,7 @@ python_tests(
     dependencies=[
         ":poetry#moto",
         # "3rdparty/python:pytest#pytest",
-    ]
+    ],
 )
 
 docker_image(

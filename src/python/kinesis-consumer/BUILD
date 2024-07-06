@@ -59,5 +59,5 @@ docker_image(
     repository="kinesis_consumer",
     dependencies=[
         ":docker_files",
-    ]
+    ],
 )

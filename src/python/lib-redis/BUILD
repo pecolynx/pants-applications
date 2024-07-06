@@ -41,10 +41,4 @@ python_sources(
     sources=["lib_redis/**/*.py"],
 )
 
-python_tests(
-    name="tests",
-    resolve="lib_redis",
-    sources=["tests/**/*_test.py"],
-    dependencies=[
-    ]
-)
+python_tests(name="tests", resolve="lib_redis", sources=["tests/**/*_test.py"], dependencies=[])

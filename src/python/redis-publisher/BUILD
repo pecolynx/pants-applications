@@ -11,7 +11,7 @@ python_sources(
     dependencies=[
         "src/python/lib-redis:redis_publisher_poetry#redis",
         "src/python/lib-redis:redis_publisher_src",
-    ]
+    ],
 )
 
 pex_binary(
@@ -28,12 +28,12 @@ python_tests(
     sources=["tests/**/*_test.py"],
     dependencies=[
         ":src",
-    ]
+    ],
 )
 python_test_utils(
     name="test_utils",
     resolve="redis_publisher",
     sources=[
         "tests/conftest.py",
-    ]
+    ],
 )

@@ -23,10 +23,4 @@ pex_binary(
     entry_point="redis_client/main.py",
 )
 
-python_tests(
-    name="tests",
-    resolve="redis_client",
-    sources=["tests/**/*_test.py"],
-    dependencies=[
-    ]
-)
+python_tests(name="tests", resolve="redis_client", sources=["tests/**/*_test.py"], dependencies=[])

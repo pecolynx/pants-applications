@@ -21,8 +21,8 @@ from amazon_kclpy.v3 import processor
 from kinesis_consumer.domain.sequence_number import SequenceNumber
 from kinesis_consumer.service.app_service import AppService
 from kinesis_consumer.service.multiprocess_gateway import MultiprocessGateway
-from lib_logging.json_formatter import JsonFormatter
 from lib_logging.custom_logger import CustomLogger
+from lib_logging.json_formatter import JsonFormatter
 
 logger = logging.getLogger(__name__)
 

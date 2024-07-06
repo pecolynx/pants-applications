@@ -18,8 +18,7 @@ python_tests(
     resolve="layout_zipapp",
     interpreter_constraints=["CPython>=3.11"],
     sources=["tests/**/*_test.py"],
-    dependencies=[
-    ],
+    dependencies=[],
     skip_mypy=True,
 )
 

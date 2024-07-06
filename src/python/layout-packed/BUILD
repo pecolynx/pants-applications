@@ -18,8 +18,7 @@ python_tests(
     resolve="layout_packed",
     interpreter_constraints=["CPython>=3.11"],
     sources=["tests/**/*_test.py"],
-    dependencies=[
-    ],
+    dependencies=[],
     skip_mypy=True,
 )
 
@@ -28,8 +27,8 @@ pex_binary(
     resolve="layout_packed",
     interpreter_constraints=["CPython>=3.11"],
     entry_point="layout_packed/main.py",
-    layout = "packed",
-    execution_mode = "venv",
+    layout="packed",
+    execution_mode="venv",
     dependencies=[
         ":src",
         ":poetry",

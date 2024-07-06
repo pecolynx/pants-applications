@@ -16,10 +16,4 @@ pex_binary(
     entry_point="grpc_client/main.py",
 )
 
-python_tests(
-    name="tests",
-    resolve="pytest",
-    sources=["tests/**/*_test.py"],
-    dependencies=[
-    ]
-)
+python_tests(name="tests", resolve="pytest", sources=["tests/**/*_test.py"], dependencies=[])

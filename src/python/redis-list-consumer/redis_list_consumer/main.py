@@ -3,7 +3,7 @@ import signal
 import time
 from typing import Any
 
-from lib_redis.redis_client import RedisClient, RedisClientConfig
+from lib_redis.redis_client import RedisClientConfig, RedisClientInterface, new_redis_client
 from pydantic import BaseModel
 from redis_list_consumer.gateway.redis_list_consumer import (
     RedisListConsumer,
@@ -28,7 +28,9 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
     logger.info("Starting Redis List Consumer")
 
-    redis = RedisClient(config=RedisClientConfig(host="localhost", port=6379, db=0, password=None))
+    redis: RedisClientInterface = new_redis_client(
+        config=RedisClientConfig(host="localhost", port=6379, db=0, password=None)
+    )
     config = RedisListConsumerConfig(list_name="MyList")
     consumer = RedisListConsumer(
         redis=redis,

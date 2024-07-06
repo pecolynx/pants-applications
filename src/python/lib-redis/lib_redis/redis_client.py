@@ -1,11 +1,13 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import Any, Optional
 
 import redis
 from pydantic import BaseModel
 
 
-class RedisClientInterface(redis.commands.core.DataAccessCommands, redis.commands.core.ManagementCommands):
+class RedisClientInterface(
+    redis.commands.core.DataAccessCommands[Any], redis.commands.core.ManagementCommands
+):
     # @abstractmethod
     # @property
     # # def data_access_commands(self) -> redis.commands.core.DataAccessCommands[Any]:
@@ -26,8 +28,8 @@ class RedisClientConfig(BaseModel):
 
 def new_redis_client(config: RedisClientConfig) -> RedisClientInterface:
     return redis.StrictRedis(
-            host=config.host, port=config.port, db=config.db, password=config.password
-        )
+        host=config.host, port=config.port, db=config.db, password=config.password
+    )  # type: ignore
 
     # def publish(self, channel: str, message: str) -> None:
     #     pass

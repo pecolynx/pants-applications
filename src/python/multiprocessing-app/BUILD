@@ -19,8 +19,7 @@ python_tests(
     resolve="multiprocessing_app",
     interpreter_constraints=["CPython>=3.11"],
     sources=["tests/**/*_test.py"],
-    dependencies=[
-    ],
+    dependencies=[],
     skip_mypy=True,
 )
 
@@ -39,5 +38,5 @@ docker_image(
     name="docker",
     image_tags=["{build_args.GIT_COMMIT}"],
     repository="multiprocessing_app",
-    dependencies=[]
+    dependencies=[],
 )

@@ -42,5 +42,5 @@ docker_image(
     repository="kinesis_producer",
     dependencies=[
         ":docker_files",
-    ]
+    ],
 )

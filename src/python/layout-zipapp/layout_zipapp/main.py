@@ -1,1 +1,1 @@
-print('layout_zipapp')
+print("layout_zipapp")

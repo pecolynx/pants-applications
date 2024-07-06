@@ -11,7 +11,7 @@ python_sources(
     dependencies=[
         "src/python/lib-redis:redis_list_consumer_poetry#redis",
         "src/python/lib-redis:redis_list_consumer_src",
-    ]
+    ],
 )
 
 pex_binary(
@@ -22,9 +22,5 @@ pex_binary(
 )
 
 python_tests(
-    name="tests",
-    resolve="redis_list_consumer",
-    sources=["tests/**/*_test.py"],
-    dependencies=[
-    ]
+    name="tests", resolve="redis_list_consumer", sources=["tests/**/*_test.py"], dependencies=[]
 )

@@ -10,13 +10,7 @@ python_sources(
 )
 
 
-python_tests(
-    name="tests",
-    resolve="lib_logging",
-    sources=["tests/**/*_test.py"],
-    dependencies=[
-    ]
-)
+python_tests(name="tests", resolve="lib_logging", sources=["tests/**/*_test.py"], dependencies=[])
 
 # kinesis_consumer
 poetry_requirements(
