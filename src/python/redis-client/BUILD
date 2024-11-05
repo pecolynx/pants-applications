@@ -10,7 +10,7 @@ python_sources(
     sources=["redis_client/**/*.py"],
     dependencies=[
         "src/python/lib-redis:redis_client_poetry#redis",
-        # "src/python/lib-redis:redis_client_poetry#types-redis",
+        "src/python/lib-redis:redis_client_poetry#types-redis",
         # "src/python/lib-redis:redis_client_poetry#pydantic",
         "src/python/lib-redis:redis_client_src",
     ],
