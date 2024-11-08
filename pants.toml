@@ -1,5 +1,5 @@
 [GLOBAL]
-pants_version = "2.21.0"
+pants_version = "2.22.0"
 
 backend_packages = [
     "pants.backend.build_files.fmt.ruff",
@@ -20,7 +20,8 @@ backend_packages = [
 ]
 
 [python]
-interpreter_constraints = ["CPython>=3.9,<4"]
+# interpreter_constraints = ["CPython>=3.9,<4"]
+interpreter_constraints = ["CPython>=3.9"]
 enable_resolves = true
 default_resolve = "default"
 
@@ -47,6 +48,7 @@ layout_zipapp = "3rdparty/python/layout_zipapp.lock"
 layout_packed = "3rdparty/python/layout_packed.lock"
 ddtrace_app = "3rdparty/python/ddtrace_app.lock"
 dep_test = "3rdparty/python/dep_test.lock"
+asyncio_cpu_test = "3rdparty/python/asyncio_cpu_test.lock"
 
 [python-infer]
 ambiguity_resolution = "by_source_root"
@@ -101,3 +103,9 @@ requirements = ["//3rdparty/python:pytest"]
 # # version = "mypy-protobuf==2.10"
 # config = "build-support/pyproject.toml"
 # # lockfile = "build-support/mypy_protobuf_lockfile.txt"
+
+[pex-cli]
+version = "v2.3.1"
+
+[python-bootstrap]
+search_path = ["/usr/bin/python3"]

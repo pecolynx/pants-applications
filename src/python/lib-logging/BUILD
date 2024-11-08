@@ -44,3 +44,7 @@ python_sources(
     resolve="multiprocessing_app",
     sources=["lib_logging/**/*.py"],
 )
+
+poetry_requirements(
+    name="poetry",
+)
