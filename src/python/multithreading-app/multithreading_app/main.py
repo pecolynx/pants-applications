@@ -35,29 +35,31 @@ def main_1() -> None:
         if i == 5:
             break
 
-def wait(a:str, b:int) -> None:
+
+def wait(a: str, b: int) -> None:
     print(f"sleep start {a}, {b}")
     time.sleep(1)
     print("sleep end")
 
+
 class Main2:
     def __init__(self, num: int) -> None:
         pass
-    
+
     def start(self, num: int) -> None:
         self.executor = futures.ThreadPoolExecutor(num)
         start = time.time()
         for i in range(3):
             print(f"submit start {i}")
-            self.executor.submit(wait, a="x", b=123+i) 
+            self.executor.submit(wait, a="x", b=123 + i)
             print(f"submit end {i}")
 
         self.executor.shutdown(wait=True)
         self.executor.shutdown(wait=True)
         print(f"{time.time() - start}")
 
-def main_2() -> None:
 
+def main_2() -> None:
     m = Main2(3)
     m.start(3)
     m.start(3)

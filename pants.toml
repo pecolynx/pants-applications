@@ -7,7 +7,7 @@ backend_packages = [
     "pants.backend.python.mixed_interpreter_constraints",
     "pants.backend.python.lint.bandit",
     # "pants.backend.python.lint.black",
-    "pants.backend.python.lint.docformatter",
+    # "pants.backend.python.lint.docformatter",
     "pants.backend.docker.lint.hadolint",
     "pants.backend.python.lint.isort",
     # "pants.backend.python.lint.pylint",
@@ -104,8 +104,12 @@ requirements = ["//3rdparty/python:pytest"]
 # config = "build-support/pyproject.toml"
 # # lockfile = "build-support/mypy_protobuf_lockfile.txt"
 
-[pex-cli]
-version = "v2.3.1"
+# [pex-cli]
+# version = "v2.3.1"
+
 
 [python-bootstrap]
-search_path = ["/usr/bin/python3"]
+# search_path = ["/usr/bin/python3"]
+# search_path = ["$HOME/.pyenv/versions/3.11.2/bin/python"]
+# search_path = [  "<PATH>" ]
+search_path = []

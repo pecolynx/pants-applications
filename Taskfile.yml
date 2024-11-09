@@ -1,0 +1,17 @@
+version: '3'
+
+env:
+  PANTS_PYTHON_BOOTSTRAP_SEARCH_PATH: "{{.HOME}}/.pyenv/versions/3.11.2/bin/python"
+
+tasks:
+  hello:
+    cmds:
+      - echo 'Hello World from Task!'
+    silent: true
+  all:
+    cmds:
+      - "pants fix check lint ::"
+  package:
+    cmds:
+      - "pants package src/python/dep-test:dep_test"
+      # - "pants package ::"
